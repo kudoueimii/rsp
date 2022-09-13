@@ -4,16 +4,16 @@ class Player
     puts "数字を入力してください。"
     puts "0:グー, 1:チョキ, 2:パー"
 
-    player_hand = gets.to_i
-
-    while player_hand != 0 && player_hand != 1 && player_hand != 2
-      puts "0〜2の数字を入力してください。"
-      puts "0:グー, 1:チョキ, 2:パー" 
-      player_hand = gets.to_i
-    end
-
-    return player_hand
-    
+    player_hand = gets.chomp
+    while true
+          if player_hand == "0" || player_hand == "1" || player_hand == "2"
+            return player_hand.to_i
+          else
+            puts "0〜2の数字を入力してください。"
+            puts "0:グー, 1:チョキ, 2:パー" 
+            player_hand = gets.chomp
+          end
+    end  
   end  
 end
 
@@ -29,6 +29,7 @@ class Janken
   def pon(player_hand, enemy_hand)
     janken = ["グー", "チョキ", "パー"]
     puts "相手の手は#{janken[enemy_hand]}です。"
+
     if (player_hand == enemy_hand)
       next_game = true
       puts "あいこ"
